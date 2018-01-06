@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>申请提现</title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+        body {
+            line-height: 1;
+        }
+        ol, ul {
+            list-style: none;
+        }
+        blockquote, q {
+            quotes: none;
+        }
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .layui-m-layercont {
+            padding: 30px 30px!important;
+        }
+        .layui-m-layerbtn{
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+        .layui-m-layer-msg .layui-m-layercont{
+            padding: 10px 20px !important;
+        }
+        /* .layui-m-layermain, .layui-m-layershade{
+            height: 50% !important;
+        } */
+
+
+
+        .txTitle{
+            background:white;
+        }
+        .course-tab {
+            width: 100%;
+            height: 25px;
+            padding:10px 0;
+        }
+        .course-tab li {
+            margin-top: 1px;
+            width: 50%;
+            float: left;
+            text-align: center;
+            line-height: 22px;
+        }
+        .course-tab li:first-child{
+            border-right: 1px solid #00d8c9;
+            box-sizing: border-box;
+        }
+        .color_666 {
+            color: #666;
+        }
+        .course-tab li:first-child span {
+            border-bottom: 2px solid #00d8c9;
+            padding-bottom: 5px;
+        }
+        .txGold{
+            text-align:center;
+            font-size:18px;
+            color:#8d8e8e;
+            padding:20px 0;
+        }
+        .txGold div:last-child{
+            font-size:22px;
+            font-weight:bold;
+            margin-top:8px;
+            color:#00d8c9;
+        }
+        .txNumber{
+            border-bottom: 1px solid #e6e6e6;
+            padding: 5px 10px;
+            margin-top: 2px;
+            background:white;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        input {
+            box-sizing: border-box;
+            border: none;
+            background: 0 0;
+            border-radius: 0;
+            box-shadow: none;
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 43px;
+            color: #000;
+            font-size: 14px;
+            font-family: inherit;
+            outline: medium;
+        }
+        .course-tab1 {
+            width: 100%;
+            height: 30px;
+        }
+        .course-tab1 li.curr {
+            color: #fff;
+            background: #00d8c9;
+            border-radius: 2px;
+        }
+        .course-tab1 li {
+            width: 47%;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            /* color: #e82262; */
+            border-radius: 4px;
+            margin-left: 1%;
+            margin-right: 1%;
+            border: 1px solid #00d8c9;
+        }
+        .bg_white {
+            background: #fff;
+        }
+        .p-btn {
+            text-align: center;
+            width: 90%;
+            margin: 12px 5%;
+        }
+        .btn {
+            text-align: center;
+            border-radius: 6px;
+            background: #00d8c9;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            width: 100%;
+            height: 40px;
+            border-color: #00d8c9;
+        }
+        .shuoming p {
+            line-height: 25px;
+            font-size: 14px;
+            color: #666;
+        }
+
+
+    </style>
+</head>
+<!-- 字8d8e8e 绿色00d8c9-->
+<body style="background: #f2f2f2;">
+<div class="txContainer">
+    <div class="txTitle">
+        <ul class="course-tab">
+            <li class="color_666" style="color: #00d8c9;"><span>申请提现</span></li>
+            <li class="curr" onclick="jump_record();">提现记录</li>
+        </ul>
+    </div>
+    <div class="txGold">
+        <div>当前可兑换金币</div>
+        <div><span style="font-size: 26px;">￥</span><span class='gold'></span></div>
+    </div>
+    <div class="txNumber">
+        <div class="color_666" style="padding:5px 0;">
+            <p class="big">提现金额</p>
+        </div>
+        <div style="padding:2px 0;">
+            <div class="fl color_666" style="font-size: 26px;margin-top:6px;">
+                <span>￥</span>
+            </div>
+            <div class="fl" style="padding-left: 5px;">
+                <input type="number" placeholder="最低 100 元可提现" id="money_num" value="">
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    <div class="bg_white" style="margin:5px 0 0 0;padding: 5px 10px;">
+        <div style="width: 92%;margin: 5px 0 5px 4%; border-radius: 4px;">
+            <ul class="course-tab1">
+                <li onclick="jump_txzfb();">使用支付宝提现</li>
+                <li class="curr">使用银行卡提现</li>
+            </ul>
+        </div>
+        <div style="border-bottom: 1px solid #e6e6e6;">
+            <div class="fl color_666" style="font-size: 14px; line-height: 43px;">
+                <span>开户名</span>
+            </div>
+            <div class="fr " style="width: 60%;">
+                <input type="text" placeholder="请输入收款人姓名" id="ali_realname" value="" class="" style="text-align: right;">
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div style="border-bottom: 1px solid #e6e6e6;">
+            <div class="fl color_666" style="font-size: 14px; line-height: 43px;">
+                <span>银行卡号</span>
+            </div>
+            <div class="fr " style="width: 60%;">
+                <input type="text" placeholder="请输入银行卡号" id="ali_account" value="" class="" style="text-align: right;">
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div style="">
+            <div class="fl color_666" style="font-size: 14px; line-height: 43px;">
+                <span>开户支行</span>
+            </div>
+            <div class="fr" style="width: 60%;">
+                <input type="text" placeholder="请输入开户支行" id="yhk_account_addr" value="" class="" style="text-align: right;">
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+
+    <div class="p-btn"><input type="submit" value="提现" class="btn" onclick="postcert()">
+    </div>
+    <div class="shuoming" style="padding:0 20px 10px 20px;">
+        <p>注意事项:</p>
+        <p>1.目前只支持支付宝和银行卡提现，更多提现方式我们将陆续开通；</p>
+        <p>2.提现比例为<span class="proportion"></span>金币=1元，需要大于<span class="proportion1"></span>元才可以申请提现。提现到账时间预计3~7个工作日。</p>
+    </div>
+</div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://res.layui.com/layui/release/layer/dist/mobile/layer.js?2.x"></script>
+    <script type="text/javascript">
+
+    var parameter = window.location.search;
+
+    // var baseUrl = 'http://192.168.0.155:8080/ComeToD';
+    var baseUrl = GetQueryString("url");
+
+    var recid = GetQueryString("recid");
+    var loginId = GetQueryString("loginId");
+
+    var gold = GetQueryString("money");
+    jQuery(document).ready(function($) {
+        $('.gold').html(gold);
+    });
+
+    var minMoney = 0;//最低提现金额
+    var proportion;//金币换算比例
+
+    $(function() {
+        $.ajax({
+            type: "get",
+            url: baseUrl+"/getDataFixeds",
+            data: {
+                recid: 1,
+                loginId:loginId//用户token
+            },
+            success: function (d) {
+                // console.log(d);
+                if(d.result == "success"){
+                    if(d.data.length > 0){
+                        minMoney = d.data[0].minMoney;
+                        proportion = d.data[0].moneyExchange;
+                        $('#money_num').attr('placeholder','最低 '+minMoney+' 元可提现');
+                        $('.proportion').html(proportion);
+                        $('.proportion1').html(minMoney);
+                    }else{
+
+                    }
+                }else{
+                    console.log(d.msg);
+                }
+            }
+        });
+    });
+
+    function postcert() {
+        var money_num = $("#money_num").val().trim();
+        var ali_account = $("#ali_account").val().trim();
+        var ali_realname = $("#ali_realname").val().trim();
+        var yhk_account_addr = $("#yhk_account_addr").val().trim();
+        if (!money_num) {
+            layer.open({
+               content: '请输入提现金额',
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#money_num").focus();
+            return;
+        }
+        if (money_num < minMoney) {
+            layer.open({
+               content: $('#money_num').attr('placeholder'),
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#money_num").focus();
+            return;
+        }
+        if (money_num > (gold/proportion)) {
+            layer.open({
+               content: '账户余额不足，无法提现',
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#money_num").focus();
+            return;
+        }
+        if (!ali_realname) {
+            layer.open({
+               content: '请输入收款人姓名',
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#ali_realname").focus();
+            return;
+        }
+        if (!ali_account) {
+            layer.open({
+               content: '请输入收款人姓名',
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#ali_account").focus();
+            return;
+        }
+        if (!yhk_account_addr) {
+            layer.open({
+               content: '请输入开户支行',
+               skin: 'msg',
+               time: 2 //2秒后自动关闭
+            });
+            $("#请输入开户支行").focus();
+            return;
+        }
+        layer.open({
+            style: "width:80%;",
+            anim: 'up',
+            content: '确定要提现吗？',
+            btn: ['确认', "取消"],
+            yes: function (index) {
+//                    alert('点击了是');
+                layer.close(index);
+                tixian();
+            },
+            no: function (index) {
+                layer.close(index);
+            }
+        });
+    }
+     //提现
+    function tixian() {
+        var money_num = $("#money_num").val().trim();
+        var ali_account = $("#ali_account").val().trim();
+        var ali_realname = $("#ali_realname").val().trim();
+        var yhk_account_addr = $("#yhk_account_addr").val().trim();
+        $.ajax({
+            method: 'POST',
+            url: baseUrl+'/saveWithDrawals',
+            data: {
+                loginId: loginId,
+                userRecid: recid,
+                moneyAmount: money_num,
+                alipaynumber: ali_account,
+                withdpeople: ali_realname,
+                withdbank:yhk_account_addr,
+                withdway: 3
+            },
+            dataType: 'json',
+            success: function (d) {
+                if (d.result == 'success') {
+                    layer.open({
+                       content: '提现申请成功',
+                       skin: 'msg',
+                       time: 2 //2秒后自动关闭
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2500);
+                } else {
+                    layer.open({
+                       content: d.msg,
+                       skin: 'msg',
+                       time: 2 //2秒后自动关闭
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2500);
+                }
+            }
+        });
+    }
+
+    function jump_record() {
+        document.location.href = 'tixianRecord.html'+parameter;
+    }
+    function jump_txzfb() {
+        document.location.href = 'tixianzfb.html'+parameter;
+    }
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)return unescape(r[2]);
+        return null;
+    }
+</script>
+</body>
+</html>
